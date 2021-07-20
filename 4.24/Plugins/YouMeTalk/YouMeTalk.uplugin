@@ -1,0 +1,26 @@
+{
+
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "YouMeTalk",
+	"Description": "",
+	"Category": "YouMe",
+	"CreatedBy": "Tamron",
+	"CreatedByURL": "https://www.youme.im/",
+	"DocsURL": "",
+	"MarketplaceURL": "https://www.youme.im/",
+	"SupportURL": "https://www.youme.im/",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "YouMeTalk",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"WhitelistPlatforms": [ "Win64", "IOS", "Android" ]
+		}
+	]
+}
