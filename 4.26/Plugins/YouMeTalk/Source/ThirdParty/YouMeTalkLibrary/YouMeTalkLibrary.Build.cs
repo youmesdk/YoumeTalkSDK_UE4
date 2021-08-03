@@ -57,7 +57,7 @@ public class YouMeTalkLibrary : ModuleRules
             PublicAdditionalLibraries.Add(Path.Combine(VivoxLibraryPath, "libYouMeCommon.a"));
             PublicFrameworks.Add("CFNetwork");
             PublicFrameworks.Add("AVFoundation");
-            PublicAdditionalLibraries.Add("sqlite3");
+            PublicSystemLibraries.Add("sqlite3");
         }
         else if (Target.Platform == UnrealTargetPlatform.Mac)
         {
