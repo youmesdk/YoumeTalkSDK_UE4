@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright © 2014-2021 YouMe. All Rights Reserved.
 
 using System.IO;
 using UnrealBuildTool;

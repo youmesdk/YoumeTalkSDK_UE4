@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright © 2014-2021 YouMe. All Rights Reserved.
 
 using System;
 using System.IO;
