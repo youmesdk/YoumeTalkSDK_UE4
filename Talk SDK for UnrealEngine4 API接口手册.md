@@ -198,7 +198,7 @@ API使用的基本流程：（初始化 -> 收到初始化成功回调通知 -> 
 
 - ### 蓝图用法
 
-  调用 **YouMeTalkInit** 蓝图节点。
+  在蓝图中调用 **Init** 蓝图节点。
 
 ![image-20210813104256676](/Images/image_12.png)
 
@@ -210,14 +210,14 @@ API使用的基本流程：（初始化 -> 收到初始化成功回调通知 -> 
      #include "YouMeTalkAPI.h"
      ```
 
-  2. 调用 **YouMeTalkInit** 接口。
+  2. 调用 **Init** 接口。
 
      ```C++
      FString strAppKey = "";
      FString strAPPSecret = "";
      EYouMeRTCServerRegion youMeRTCServerRegion = EYouMeRTCServerRegion::RTC_CN_SERVER;
      FString strExtServerRegionName = "";
-     UYouMeTalkAPI::YouMeTalkInit(strAppKey, strAPPSecret, youMeRTCServerRegion, strExtServerRegionName);
+     UYouMeTalkAPI::Init(strAppKey, strAPPSecret, youMeRTCServerRegion, strExtServerRegionName);
      ```
 
 - ### 异步回调
@@ -490,7 +490,7 @@ API使用的基本流程：（初始化 -> 收到初始化成功回调通知 -> 
 
 - ### 蓝图用法
 
-  在蓝图中调用 **SpeakToChannel** 蓝图节点。
+  在蓝图中调用 **LeaveChannelMultiMode** 蓝图节点。
 
 ![image-20210813105734972](/Images/image_34.png)
 
@@ -704,7 +704,7 @@ UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
      #include "YouMeTalkAPI.h"
      ```
 
-  2. 调用 **SetWhiteUserList** 接口。
+  2. 调用 **SetOutputToSpeaker** 接口。
 
      ```C++
      bool bOutputToSpeaker = true;
@@ -750,6 +750,22 @@ UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
      bool mute = true;UYouMeTalkAPI::SetSpeakerMute(mute);
      ```
 
+- ### 异步回调
+
+  蓝图回调：
+
+  ![image-20210813111624602](/Images/image_37.png)
+
+  ![image-20210818174159793](E:\Work\YouMeTalkSDK_UE4\Images\image_72.png)
+
+  C++回调：
+
+  ```
+  //涉及到的主要回调事件有：
+  //YOUME_EVENT_LOCAL_SPEAKER_ON - 自己扬声器打开
+  //YOUME_EVENT_LOCAL_SPEAKER_OFF - 自己扬声器关闭
+  virtual void OnEvent_Implementation(const EYouMeEvent event, const EYouMeErrorCode error, const FString& channel, const FString& param) override;
+  ```
 
 ### 获取扬声器状态
 
@@ -829,6 +845,23 @@ UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
      ```c++
      bool mute = true;UYouMeTalkAPI::SetMicrophoneMute(mute);
      ```
+
+- ### 异步回调
+
+  蓝图回调：
+
+  ![image-20210813111624602](/Images/image_37.png)
+
+  ![image-20210818174521412](E:\Work\YouMeTalkSDK_UE4\Images\image_73.png)
+
+  C++回调：
+
+  ```
+  //涉及到的主要回调事件有：
+  //YOUME_EVENT_LOCAL_MIC_ON - 自己麦克风打开
+  //YOUME_EVENT_LOCAL_MIC_OFF - 自己麦克风关闭
+  virtual void OnEvent_Implementation(const EYouMeEvent event, const EYouMeErrorCode error, const FString& channel, const FString& param) override;
+  ```
 
 ### 获取麦克风状态
 
@@ -1802,7 +1835,6 @@ UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
 
      ```C++
      int32 vol = 50;
-     
      UYouMeTalkAPI::SetBackgroundMusicVolume(vol);
      ```
 
@@ -1939,6 +1971,8 @@ UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
 
 - ### 蓝图用法
 
+  在蓝图中调用 **SetSoundtouchPitchSemiTones** 蓝图节点。
+
   ![image-20210813155936408](/Images/image_58.png)
 
 - ### C++用法
@@ -1990,6 +2024,8 @@ UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
 
 - ### 蓝图用法
 
+  在蓝图中调用 **SetReverbEnabled** 蓝图节点。
+
   ![image-20210813160448447](/Images/image_59.png)
 
 - ### C++用法
@@ -2000,7 +2036,7 @@ UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
      #include "YouMeTalkAPI.h"
      ```
 
-  2. 调用 **SetSoundtouchPitchSemiTones** 接口。
+  2. 调用 **SetReverbEnabled** 接口。
 
      ```C++
      bool bEnabled = false;
@@ -2039,6 +2075,8 @@ UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
   无
 
 - ### 蓝图用法
+
+  在蓝图中调用 **SetRecordingTimeMs** 蓝图节点。
 
   ![image-20210813161243578](/Images/image_60.png)
 
@@ -2085,6 +2123,8 @@ UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
   无
 
 - ### 蓝图用法
+
+  在蓝图中调用 **SetPlayingTimeMs** 蓝图节点。
 
   ![image-20210813161651238](/Images/image_61.png)
 
@@ -2142,6 +2182,8 @@ UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
 
 - ### 蓝图用法
 
+  在蓝图中调用 **SetServerRegion** 蓝图节点。
+
   ![image-20210813162329144](/Images/image_62.png)
 
 - ### C++用法
@@ -2152,7 +2194,7 @@ UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
      #include "YouMeTalkAPI.h"
      ```
 
-  2. 调用 **SetRecordingTimeMs** 接口。
+  2. 调用 **SetServerRegion** 接口。
 
      ```C++
      EYouMeRTCServerRegion regionId;
@@ -2199,6 +2241,8 @@ UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
   返回YOUME_SUCCESS才会有异步回调通知。其它返回值请参考[YouMeErrorCode类型定义](https://youme.im/doc/TalkCocosC++StatusCode-v2.5.php#YouMeErrorCode类型定义)。
 
 - ### 蓝图用法
+
+  在蓝图中调用 ****RequestRestApi** ** 蓝图节点。
 
   ![image-20210813162943123](/Images/image_63.png)
 
