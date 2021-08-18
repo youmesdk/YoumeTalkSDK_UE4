@@ -15,7 +15,7 @@ void UYouMeTalkAPI::UnbindObserver()
 	FYouMeTalkCallback::GetInstance()->UnbindObserver();
 }
 
-EYouMeErrorCode UYouMeTalkAPI::YouMeTalkInit(const FString strAppKey, const FString strAPPSecret, EYouMeRTCServerRegion youMeRTCServerRegion, const FString strExtServerRegionName)
+EYouMeErrorCode UYouMeTalkAPI::Init(const FString strAppKey, const FString strAPPSecret, EYouMeRTCServerRegion youMeRTCServerRegion, const FString strExtServerRegionName)
 {
 	youMeRTCServerRegion = EYouMeRTCServerRegion::RTC_DEFAULT_SERVER;
 	YouMeErrorCode errorcode;
@@ -272,7 +272,7 @@ EYouMeErrorCode UYouMeTalkAPI::SetFarendVoiceLevelCallback(int32 maxLevel)
 	return YouMeTalkDefineConvert::YouMeErrorCodeConvert(errorcode);
 }
 
-EYouMeErrorCode UYouMeTalkAPI::SetMicLevelCallback(int32 maxLevel)
+EYouMeErrorCode UYouMeTalkAPI::Talk_SetMicLevelCallback(int32 maxLevel)
 {
 	YouMeErrorCode errorcode = IYouMeVoiceEngine::getInstance()->setMicLevelCallback(maxLevel);
 	return YouMeTalkDefineConvert::YouMeErrorCodeConvert(errorcode);
@@ -411,6 +411,11 @@ EYouMeErrorCode UYouMeTalkAPI::RequestRestApi(const FString strCommand, const FS
 	return YouMeTalkDefineConvert::YouMeErrorCodeConvert(errorcode);
 }
 
+void UYouMeTalkAPI::SetRestApiCallback()
+{
+	
+}
+
 void UYouMeTalkAPI::SetToken(const FString pToken)
 {
 	IYouMeVoiceEngine::getInstance()->setToken(TCHAR_TO_ANSI(*pToken));
@@ -442,6 +447,7 @@ EYouMeErrorCode UYouMeTalkAPI::KickOtherFromChannel(const FString pUserID, const
 EYouMeErrorCode UYouMeTalkAPI::UnInit()
 {
 	YouMeErrorCode errorcode = IYouMeVoiceEngine::getInstance()->unInit();
+	FYouMeTalkCallback::Destroy();
 	return YouMeTalkDefineConvert::YouMeErrorCodeConvert(errorcode);
 }
 

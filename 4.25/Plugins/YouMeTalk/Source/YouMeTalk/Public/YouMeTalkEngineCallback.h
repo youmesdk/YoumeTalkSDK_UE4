@@ -11,6 +11,8 @@ class FYouMeTalkCallback : public IYouMeEventCallback, public IRestApiCallback, 
 public:
 	static FYouMeTalkCallback* GetInstance();
 
+	static void Destroy();
+
 	void BindObserver(TScriptInterface<IYouMeTalkObserver> Listener);
 
 	void UnbindObserver();

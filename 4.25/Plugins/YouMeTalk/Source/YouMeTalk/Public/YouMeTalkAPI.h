@@ -40,7 +40,7 @@ public:
 	*          Other - Specific error code
 	*/
 	UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
-		static EYouMeErrorCode YouMeTalkInit(const FString strAppKey, const FString strAPPSecret, EYouMeRTCServerRegion youMeRTCServerRegion, const FString strExtServerRegionName);
+		static EYouMeErrorCode Init(const FString strAppKey, const FString strAPPSecret, EYouMeRTCServerRegion youMeRTCServerRegion, const FString strExtServerRegionName);
 
 	/**
 	*  funcDesc: YouMeTalk plugin is init
@@ -194,7 +194,7 @@ public:
 		static void SetMicrophoneMute(bool mute);
 
 	/**
-*	*  funcDesc: Get microphone mute status
+	*  funcDesc: Get microphone mute status
 	*  @return True -- mute, false -- unmute
 	*/
 	UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
@@ -419,7 +419,7 @@ public:
 	*          Other - Specific error code
 	*/
 	UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
-		static EYouMeErrorCode SetMicLevelCallback(int32 maxLevel);
+		static EYouMeErrorCode Talk_SetMicLevelCallback(int32 maxLevel);
 
 	/**
 	*  funcDesc: Play background music and allow selection to blend to speaker output and microphone input
@@ -626,6 +626,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
 		static EYouMeErrorCode RequestRestApi(const FString strCommand, const FString strQueryBody, int32 requestID);
 
+	UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
+		static void SetRestApiCallback();
+		
 	/**
 	*  funcDesc: Set the token of authentication and the time when the user joins the room
 	*  @param pToken: The token is used for authentication, which is set to null or empty string, and the token value is cleared.

@@ -24,11 +24,20 @@ FYouMeTalkCallback* FYouMeTalkCallback::YimWork;
 
 FYouMeTalkCallback * FYouMeTalkCallback::GetInstance()
 {
-	if (YimWork == NULL)
+	if (YimWork == nullptr)
 	{
 		YimWork = new FYouMeTalkCallback();
 	}
 	return YimWork;
+}
+
+void FYouMeTalkCallback::Destroy()
+{
+	if (YimWork != nullptr)
+	{
+		delete YimWork;
+		YimWork = nullptr;
+	}
 }
 
 void FYouMeTalkCallback::BindObserver(TScriptInterface<IYouMeTalkObserver> Listener)
@@ -46,6 +55,11 @@ void FYouMeTalkCallback::UnbindObserver()
 
 void FYouMeTalkCallback::onEvent(const YouMeEvent event, const YouMeErrorCode error, const char * channel, const char * param)
 {
+	if (YimObserver == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("YimObserver is nullptr, please bind a valid observer"));
+		return;
+	}
 	bool bIsImplemented = IsImplementFunc(YimObserver, FName(TEXT("OnEvent")));
 
 	if (bIsImplemented == true)
@@ -226,7 +240,12 @@ void FYouMeTalkCallback::onRequestRestAPI(int requestID, const YouMeErrorCode & 
 
 void FYouMeTalkCallback::onMemberChange(const char * channel, const char * listMemberChange, bool bUpdate)
 {
-	UE_LOG(LogTemp, Log, TEXT("YouMeTalkCallback::onMemberChange"));
+	if (YimObserver == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("YimObserver is nullptr, please bind a valid observer"));
+		return;
+	}
+
 	bool bIsImplemented = IsImplementFunc(YimObserver, FName(TEXT("OnMemberChange")));
 
 	if (bIsImplemented == true)
