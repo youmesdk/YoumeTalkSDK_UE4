@@ -24,5 +24,7 @@
 
 ### Step4：根据文档调试集成
 
-- Talk SDK for UnrealEngine4 C++ 使用指南
+- Talk SDK for UnrealEngine4 插件使用指南
+- Talk SDK for UnrealEngine4 典型场景实现方法
 - Talk SDK for UnrealEngine4 API接口手册
+

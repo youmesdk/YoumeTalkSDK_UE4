@@ -30,7 +30,8 @@ public class YouMeTalk : ModuleRules
 			{
 				"Core",
                 "Projects",
-                "Json"
+                "Json",
+                "YouMeTalkLibrary"
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
@@ -41,8 +42,6 @@ public class YouMeTalk : ModuleRules
 			{
                 "CoreUObject",
                 "Engine",
-                "UMG",
-                "YouMeTalkLibrary"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

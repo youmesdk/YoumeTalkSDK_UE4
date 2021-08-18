@@ -84,10 +84,11 @@
 
        ```C++
        #include "YouMeTalkAPI.h"
+       #include "YouMeTalkDefine.h"
        ```
-
+     
      - 调用 **YouMeTalkInit** 接口。
-
+     
        ```C++
        FString strAppKey = "";
        FString strAPPSecret = "";
@@ -95,9 +96,9 @@
        FString strExtServerRegionName = "";
        UYouMeTalkAPI::Init(strAppKey, strAPPSecret, youMeRTCServerRegion, strExtServerRegionName);
        ```
-
+     
      - 成功初始化后，将触发 OnEvent_Implementation 函数回调，需要实现OnEvent_Implementation虚函数，才能触发回调。
-
+     
      - ```
        //涉及到的主要回调事件有：
        // YOUME_EVENT_INIT_OK  - 表明初始化成功
@@ -120,10 +121,11 @@
 
      - ```
        #include "YouMeTalkAPI.h"
+       #include "YouMeTalkDefine.h"
        ```
-
+       
      - 调用 **JoinChannelSingleMode** 接口。
-
+     
      - ```
        FString strUserID = "";
        FString strChannelID = "";
@@ -131,9 +133,9 @@
        bool bCheckRoomExis = true;
        UYouMeTalkAPI::JoinChannelSingleMode(strUserID, strChannelID, userRol, bCheckRoomExis);
        ```
-
+     
      - 成功初始化后，将触发 OnEvent_Implementation 函数回调，需要实现OnEvent_Implementation虚函数，才能触发回调。
-
+     
      - ```
        //涉及到的主要回调事件有：
        //YOUME_EVENT_JOIN_OK - 成功进入语音频道
@@ -192,16 +194,17 @@
 
      - ```
        #include "YouMeTalkAPI.h"
+       #include "YouMeTalkDefine.h"
        ```
-
+       
      - 调用 **LeaveChannelAll** 接口。
-
+     
      - ```
        UYouMeTalkAPI::LeaveChannelAll();
        ```
-
+     
      - 成功初始化后，将触发 OnEvent_Implementation 函数回调，需要实现OnEvent_Implementation虚函数，才能触发回调。
-
+     
      - ```
        //涉及到的主要回调事件有：
        //YOUME_EVENT_LEAVED_ALL - 成功退出所有语音频道
@@ -242,13 +245,14 @@
 
      - ```
        #include "YouMeTalkAPI.h"
+       #include "YouMeTalkDefine.h"
        ```
-
+       
      - 调用 **UnInit** 接口。
-
+     
      - ```
        UYouMeTalkAPI::UnInit();
        ```
-
+     
        
 

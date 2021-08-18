@@ -109,7 +109,13 @@ API使用的基本流程：（初始化 -> 收到初始化成功回调通知 -> 
 
 - ### C++用法
 
-  在继承回调接口 **IYouMeTalkObserver** 的类中，实现 **回调事件OnEvent虚函数**。
+  1. 在继承回调接口 **IYouMeTalkObserver** 的类中，引入头文件
+
+     ```
+     #include "YouMeTalkDefine.h"
+     ```
+
+  2. 在继承回调接口 **IYouMeTalkObserver** 的类中，实现 **回调事件OnEvent虚函数**。
 
   ```C++
   virtual void OnEvent_Implementation(const EYouMeEvent event, const EYouMeErrorCode error, const FString& channel, const FString& param) override;
@@ -208,6 +214,7 @@ API使用的基本流程：（初始化 -> 收到初始化成功回调通知 -> 
 
      ```C++
      #include "YouMeTalkAPI.h"
+     #include "YouMeTalkDefine.h"
      ```
 
   2. 调用 **Init** 接口。
@@ -290,6 +297,7 @@ API使用的基本流程：（初始化 -> 收到初始化成功回调通知 -> 
 
      ```C++
      #include "YouMeTalkAPI.h"
+     #include "YouMeTalkDefine.h"
      ```
 
   2. 调用 **JoinChannelSingleMode** 接口。
@@ -367,6 +375,7 @@ API使用的基本流程：（初始化 -> 收到初始化成功回调通知 -> 
 
      ```C++
      #include "YouMeTalkAPI.h"
+     #include "YouMeTalkDefine.h"
      ```
 
   2. 调用 **JoinChannelSingleMode** 接口。
@@ -564,6 +573,7 @@ UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
 
      ```c++
      #include "YouMeTalkAPI.h"
+     #include "YouMeTalkDefine.h"
      ```
 
   2. 调用 **LeaveChannelAll** 接口。
@@ -2192,10 +2202,11 @@ UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
 
      ```C++
      #include "YouMeTalkAPI.h"
+     #include "YouMeTalkDefine.h"
      ```
-
+  
   2. 调用 **SetServerRegion** 接口。
-
+  
      ```C++
      EYouMeRTCServerRegion regionId;
      FString extRegionName = " ";
@@ -2581,10 +2592,11 @@ UFUNCTION(BlueprintCallable, Category = "YouMeTalkAPI")
 
      ```C++
      #include "YouMeTalkAPI.h"
+     #include "YouMeTalkDefine.h"
      ```
-
+  
   2. 调用 **UnInit** 接口。
-
+  
      ```C++
      UYouMeTalkAPI::UnInit();
      ```
