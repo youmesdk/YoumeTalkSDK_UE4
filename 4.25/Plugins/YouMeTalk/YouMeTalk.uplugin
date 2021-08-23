@@ -20,7 +20,7 @@
 			"Name": "YouMeTalk",
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
-			"WhitelistPlatforms": [ "Win64", "IOS", "Android" ]
+			"WhitelistPlatforms": [ "Win64", "IOS", "Android", "Mac" ]
 		}
 	]
 }
