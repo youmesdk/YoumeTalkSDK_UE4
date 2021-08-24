@@ -1,5 +1,11 @@
 # Talk SDK for UnrealEngine4 使用指南
 
+## 版本
+
+***
+
+v0.1.3
+
 ## 适用范围
 
 ***
