@@ -9,6 +9,9 @@
 
 class FYouMeTalkCallback : public IYouMeEventCallback, public IRestApiCallback, public IYouMeMemberChangeCallback, public IYouMePcmCallback {
 public:
+	FYouMeTalkCallback();
+	virtual ~FYouMeTalkCallback();
+
 	static FYouMeTalkCallback* GetInstance();
 
 	static void Destroy();

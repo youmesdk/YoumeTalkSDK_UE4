@@ -22,6 +22,14 @@ static bool IsImplementFunc(UObject* Obj, const FName& name) {
 
 FYouMeTalkCallback* FYouMeTalkCallback::YimWork;
 
+FYouMeTalkCallback::FYouMeTalkCallback()
+{
+}
+
+FYouMeTalkCallback::~FYouMeTalkCallback()
+{
+}
+
 FYouMeTalkCallback * FYouMeTalkCallback::GetInstance()
 {
 	if (YimWork == nullptr)
